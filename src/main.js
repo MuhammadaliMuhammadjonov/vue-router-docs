@@ -1,6 +1,14 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import router from './router'
-import store from './store'
+import router from './router/router.js'
+import uiComponents from './ui-components'
 
-createApp(App).use(store).use(router).mount('#app')
+const app = createApp(App)
+
+// Componentlarni globallashtrish
+uiComponents.map(component => app.component(component.name, component));
+
+
+app
+.use(router)
+.mount('#app')
